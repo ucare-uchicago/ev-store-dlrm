@@ -1,3 +1,5 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.en.html)
+[![Platform](https://img.shields.io/badge/Platform-x86--64-brightgreen)](https://shields.io/)
 
 ```
   _______     ______  _                 

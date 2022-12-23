@@ -1,0 +1,5 @@
+*
+#!compressed4git*
+!.gitignore
+!readme.txt
+#!*tar.gz.part*

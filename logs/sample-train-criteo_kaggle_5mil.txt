@@ -1,0 +1,165 @@
+run pytorch ...
+Create folder to store the model and ev-tables
+:::MLLOG {"namespace": "", "time_ms": 1643404850644, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1088}}
+:::MLLOG {"namespace": "", "time_ms": 1643404850721, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1090}}
+world size: 1, current rank: 0, local rank: 0
+
+==================
+Using 1 GPU(s)...
+==================
+
+:::MLLOG {"namespace": "", "time_ms": 1643404851957, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1149}}
+:::MLLOG {"namespace": "", "time_ms": 1643404851957, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1151}}
+Loading criteo data
+>>>> at dlrm_data_pytorch.py: make_criteo_data_and_loaders() MUST reduce loaded data for inference testing!!
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START make_criteo_data_and_loaders
+>>>> IS INFERENCE ONLY == False
+>>>> Loading Criteo kaggle dataset!
+>>>>     Start Loading TRAINing data!
+
+Reading pre-processed data=./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+==== Split = train
+==== memory_map = False
+(This process eat up 1 GB)
+file = ./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+y len = 5000000
+Sparse fea = 26, Dense fea = 13
+len indices 7
+Defined split = train indices...
+Randomized indices across days ...
+==== train_indices = 4285715
+>>>>     Start Loading TESTing data!
+
+Reading pre-processed data=./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+==== Split = test
+==== memory_map = False
+(This process eat up 1 GB)
+file = ./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+y len = 5000000
+Sparse fea = 26, Dense fea = 13
+len indices 7
+Defined split = test indices...
+==== test_indices = 357143   Should be reduced because only 40k will be used!
+>>>>     PyTorch Preparing train_loader for TRAINing
+>>>>     PyTorch Preparing test_loader for TESTing
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FINISH make_criteo_data_and_loaders
+ test_ld begin = 357143  This shouldn't be 0!!
+==== FIND the source of train_ld after (dp.make_criteo_data_and_loaders)  = 33483
+command line args:  {"arch_sparse_feature_size": 36, "arch_embedding_size": "4-3-2", "arch_mlp_bot": "13-512-256-64-36", "arch_mlp_top": "512-256-1", "arch_interaction_op": "dot", "arch_interaction_itself": false, "weighted_pooling": null, "md_flag": false, "md_threshold": 200, "md_temperature": 0.3, "md_round_dims": false, "qr_flag": false, "qr_threshold": 200, "qr_operation": "mult", "qr_collisions": 4, "activation_function": "relu", "loss_function": "bce", "loss_weights": "1.0-1.0", "loss_threshold": 0.0, "round_targets": true, "data_size": 1, "num_batches": 0, "data_generation": "dataset", "rand_data_dist": "uniform", "rand_data_min": 0, "rand_data_max": 1, "rand_data_mu": -1, "rand_data_sigma": 1, "data_trace_file": "./input/dist_emb_j.log", "data_set": "kaggle", "raw_data_file": "./input/criteo_kaggle_5mil/train.txt", "processed_data_file": "./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz", "data_randomize": "total", "data_trace_enable_padding": false, "max_ind_range": -1, "data_sub_sample_rate": 0.0, "num_indices_per_lookup": 10, "num_indices_per_lookup_fixed": false, "num_workers": 0, "memory_map": false, "mini_batch_size": 128, "nepochs": 1, "learning_rate": 0.1, "print_precision": 5, "numpy_rand_seed": 123, "sync_dense_params": true, "optimizer": "sgd", "dataset_multiprocessing": false, "inference_only": false, "quantize_mlp_with_bit": 32, "quantize_emb_with_bit": 32, "save_onnx": false, "use_gpu": true, "local_rank": -1, "dist_backend": "", "print_freq": 1024, "test_freq": -1, "test_mini_batch_size": 1, "test_num_workers": 0, "print_time": true, "print_wall_time": false, "debug_mode": false, "enable_profiling": false, "plot_compute_graph": false, "tensor_board_filename": "run_kaggle_pt", "save_model": "model.pth", "load_model": "", "ev_path": "", "num_of_dp": 0, "mlperf_logging": true, "mlperf_acc_threshold": 0.0, "mlperf_auc_threshold": 0.0, "mlperf_bin_loader": false, "mlperf_bin_shuffle": false, "mlperf_grad_accum_iter": 1, "lr_num_warmup_steps": 0, "lr_decay_start_step": 0, "lr_num_decay_steps": 0, "ntest_per_epoch": 3, "percent_data_for_inference": 0.008, "input_data": "./input/criteo_kaggle_5mil", "ln_emb": [1396, 549, 1373639, 406655, 290, 21, 11862, 607, 3, 53574, 5173, 1156254, 3119, 26, 11689, 833957, 10, 4710, 2062, 4, 1015598, 17, 15, 95860, 90, 64259]}
+==== ndevices = 1
+:::MLLOG {"namespace": "", "time_ms": 1643404871193, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "dlrm", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 89}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 98}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 102}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 106}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_entry", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 110}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_poc_name", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 114}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "submission_poc_email", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 118}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "seed", "value": 123, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1447}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871194, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 128, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1450}}
+time/loss/accuracy (if enabled):
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 0.1, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1556}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1560}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "sgd_opt_base_learning_rate", "value": 0.1, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1565}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "lr_decay_start_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1568}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "sgd_opt_learning_rate_decay_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1571}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871195, "event_type": "POINT_IN_TIME", "key": "sgd_opt_learning_rate_decay_poly_power", "value": 2, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1573}}
+Should only load the dataset for testing! We are doing inference ONLY!!
+==== nbatches (comes from the train_ld)   = 33483
+==== Begin training process!
+:::MLLOG {"namespace": "", "time_ms": 1643404871197, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1598, "first_epoch_num": 1, "epoch_count": 1}}
+:::MLLOG {"namespace": "", "time_ms": 1643404871197, "event_type": "INTERVAL_START", "key": "epoch_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1604, "epoch_num": 1}}
+
+==== Dan count train iteration (train_ld) = 33483
+==== ==== Testing will be done every (test_freq) = 11194
+Finished training it 1024/33483 of epoch 0, 18.10 ms/it, loss 0.511571
+Finished training it 2048/33483 of epoch 0, 17.89 ms/it, loss 0.495775
+Finished training it 3072/33483 of epoch 0, 18.02 ms/it, loss 0.491223
+Finished training it 4096/33483 of epoch 0, 18.03 ms/it, loss 0.484776
+Finished training it 5120/33483 of epoch 0, 17.99 ms/it, loss 0.481427
+Finished training it 6144/33483 of epoch 0, 17.99 ms/it, loss 0.477368
+Finished training it 7168/33483 of epoch 0, 17.96 ms/it, loss 0.475566
+Finished training it 8192/33483 of epoch 0, 17.97 ms/it, loss 0.472236
+Finished training it 9216/33483 of epoch 0, 17.96 ms/it, loss 0.470009
+Finished training it 10240/33483 of epoch 0, 17.93 ms/it, loss 0.466935
+Finished training it 11194/33483 of epoch 0, 17.97 ms/it, loss 0.466927
+:::MLLOG {"namespace": "", "time_ms": 1643405072517, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1752, "epoch_num": 1.3343189081026192}}
+
+==== Testing at - 11194/33483 of epoch 0,
+==== Limit n_test iteration by nbatches = True
+==== MAX n_test iteration (test_ld)     = 357143
+==== MAX n_test iteration (nbatches)     = 33483
+==== ==== Progress bar (max: 33480) shown below:
+........................................
+.........................................
+==== Test stopped, reaching the nbatches = 33483
+
+recall 0.3376, precision 0.6373, f1 0.4414, ap 0.5556, auc 0.7784, best auc 0.7784, accuracy 78.443 %, best accuracy 0.000 %
+==== ==== is_best True  value = 0.7783577607757083
+==== ==== Done Testing at - 11194/33483 of epoch 0,
+==== ==== Saving model to stored_model/criteo_kaggle_5mil/epoch-0/model.pth
+==== ==== All 26 EV-Tables are saved to csv at stored_model/criteo_kaggle_5mil/epoch-0
+:::MLLOG {"namespace": "", "time_ms": 1643405286251, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1821, "epoch_num": 1.3343189081026192}}
+Finished training it 11264/33483 of epoch 0, 19.67 ms/it, loss 0.466058
+Finished training it 12288/33483 of epoch 0, 17.92 ms/it, loss 0.462124
+Finished training it 13312/33483 of epoch 0, 17.84 ms/it, loss 0.462325
+Finished training it 14336/33483 of epoch 0, 17.94 ms/it, loss 0.460806
+Finished training it 15360/33483 of epoch 0, 17.88 ms/it, loss 0.459291
+Finished training it 16384/33483 of epoch 0, 17.90 ms/it, loss 0.460775
+Finished training it 17408/33483 of epoch 0, 17.90 ms/it, loss 0.463083
+Finished training it 18432/33483 of epoch 0, 17.94 ms/it, loss 0.458925
+Finished training it 19456/33483 of epoch 0, 17.94 ms/it, loss 0.458641
+Finished training it 20480/33483 of epoch 0, 17.85 ms/it, loss 0.457979
+Finished training it 21504/33483 of epoch 0, 17.85 ms/it, loss 0.462750
+Finished training it 22388/33483 of epoch 0, 17.89 ms/it, loss 0.459406
+:::MLLOG {"namespace": "", "time_ms": 1643405486927, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1752, "epoch_num": 1.6686378162052384}}
+
+==== Testing at - 22388/33483 of epoch 0,
+==== Limit n_test iteration by nbatches = True
+==== MAX n_test iteration (test_ld)     = 357143
+==== MAX n_test iteration (nbatches)     = 33483
+==== ==== Progress bar (max: 33480) shown below:
+........................................
+.........................................
+==== Test stopped, reaching the nbatches = 33483
+
+recall 0.2376, precision 0.6981, f1 0.3545, ap 0.5654, auc 0.7857, best auc 0.7857, accuracy 78.174 %, best accuracy 0.000 %
+==== ==== is_best True  value = 0.7857153439073779
+==== ==== Done Testing at - 22388/33483 of epoch 0,
+==== ==== Saving model to stored_model/criteo_kaggle_5mil/epoch-0/model.pth
+==== ==== All 26 EV-Tables are saved to csv at stored_model/criteo_kaggle_5mil/epoch-0
+:::MLLOG {"namespace": "", "time_ms": 1643405703063, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1821, "epoch_num": 1.6686378162052384}}
+Finished training it 22528/33483 of epoch 0, 17.76 ms/it, loss 0.458152
+Finished training it 23552/33483 of epoch 0, 17.91 ms/it, loss 0.456235
+Finished training it 24576/33483 of epoch 0, 17.91 ms/it, loss 0.457441
+Finished training it 25600/33483 of epoch 0, 17.90 ms/it, loss 0.455534
+Finished training it 26624/33483 of epoch 0, 17.87 ms/it, loss 0.457261
+Finished training it 27648/33483 of epoch 0, 17.90 ms/it, loss 0.455854
+Finished training it 28672/33483 of epoch 0, 17.88 ms/it, loss 0.455297
+Finished training it 29696/33483 of epoch 0, 17.90 ms/it, loss 0.453196
+Finished training it 30720/33483 of epoch 0, 17.88 ms/it, loss 0.454351
+Finished training it 31744/33483 of epoch 0, 17.89 ms/it, loss 0.458101
+Finished training it 32768/33483 of epoch 0, 17.85 ms/it, loss 0.458331
+Finished training it 33483/33483 of epoch 0, 17.84 ms/it, loss 0.454462
+:::MLLOG {"namespace": "", "time_ms": 1643405901493, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1752, "epoch_num": 2.0}}
+
+==== Testing at - 33483/33483 of epoch 0,
+==== Limit n_test iteration by nbatches = True
+==== MAX n_test iteration (test_ld)     = 357143
+==== MAX n_test iteration (nbatches)     = 33483
+==== ==== Progress bar (max: 33480) shown below:
+........................................
+.........................................
+==== Test stopped, reaching the nbatches = 33483
+
+recall 0.2584, precision 0.6845, f1 0.3752, ap 0.5676, auc 0.7880, best auc 0.7880, accuracy 78.287 %, best accuracy 0.000 %
+==== ==== is_best True  value = 0.7880261680904135
+==== ==== Done Testing at - 33483/33483 of epoch 0,
+==== ==== Saving model to stored_model/criteo_kaggle_5mil/epoch-0/model.pth
+==== ==== All 26 EV-Tables are saved to csv at stored_model/criteo_kaggle_5mil/epoch-0
+:::MLLOG {"namespace": "", "time_ms": 1643406112354, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1821, "epoch_num": 2.0}}
+:::MLLOG {"namespace": "", "time_ms": 1643406112360, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1865, "epoch_num": 1}}
+:::MLLOG {"namespace": "", "time_ms": 1643406112360, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1870, "first_epoch_num": 1}}
+/mnt/extra/ev-store-dlrm/dlrm_data_pytorch.py:381: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:201.)
+  X_int = torch.log(torch.tensor(transposed_data[0], dtype=torch.float) + 1)
+finished!

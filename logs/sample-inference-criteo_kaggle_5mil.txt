@@ -1,0 +1,43 @@
+run pytorch ...
+Create folder to store the model and ev-tables
+:::MLLOG {"namespace": "", "time_ms": 1643656722925, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1091}}
+:::MLLOG {"namespace": "", "time_ms": 1643656723001, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1093}}
+world size: 1, current rank: 0, local rank: 0
+
+==================
+Using 1 GPU(s)...
+==================
+
+:::MLLOG {"namespace": "", "time_ms": 1643656724179, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1152}}
+:::MLLOG {"namespace": "", "time_ms": 1643656724180, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1154}}
+Loading criteo data
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START make_criteo_data_and_loaders
+>>>> IS INFERENCE ONLY == True
+>>>> Loading Criteo kaggle dataset!
+>>>>     Start Loading TESTing data!
+>>>>     Loaded data for testing is LIMITED TO Reduce memory during inference test!
+
+Reading pre-processed data=./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+file = ./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz
+Reduce the amount of data loaded! by cutting the array into new np.array
+y len = 50000
+Sparse fea = 26, Dense fea = 13
+len indices 1
+Defined split = test indices...
+==== Not splitting the indices, use ALL!
+==== test_indices = 50000   Should be reduced because only 40k will be used!
+>>>>     PyTorch Preparing test_loader for TESTing
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FINISH make_criteo_data_and_loaders
+TODO: we should read this from a file!!!
+command line args:  {"arch_sparse_feature_size": 36, "arch_embedding_size": "4-3-2", "arch_mlp_bot": "13-512-256-64-36", "arch_mlp_top": "512-256-1", "arch_interaction_op": "dot", "arch_interaction_itself": false, "weighted_pooling": null, "md_flag": false, "md_threshold": 200, "md_temperature": 0.3, "md_round_dims": false, "qr_flag": false, "qr_threshold": 200, "qr_operation": "mult", "qr_collisions": 4, "activation_function": "relu", "loss_function": "bce", "loss_weights": "1.0-1.0", "loss_threshold": 0.0, "round_targets": true, "data_size": 1, "num_batches": 0, "data_generation": "dataset", "rand_data_dist": "uniform", "rand_data_min": 0, "rand_data_max": 1, "rand_data_mu": -1, "rand_data_sigma": 1, "data_trace_file": "./input/dist_emb_j.log", "data_set": "kaggle", "raw_data_file": "./input/criteo_kaggle_5mil/train.txt", "processed_data_file": "./input/criteo_kaggle_5mil/criteo_kaggle_5mil.npz", "data_randomize": "total", "data_trace_enable_padding": false, "max_ind_range": -1, "data_sub_sample_rate": 0.0, "num_indices_per_lookup": 10, "num_indices_per_lookup_fixed": false, "num_workers": 0, "memory_map": false, "mini_batch_size": 128, "nepochs": 1, "learning_rate": 0.1, "print_precision": 5, "numpy_rand_seed": 123, "sync_dense_params": true, "optimizer": "sgd", "dataset_multiprocessing": false, "inference_only": true, "quantize_mlp_with_bit": 32, "quantize_emb_with_bit": 32, "save_onnx": false, "use_gpu": true, "local_rank": -1, "dist_backend": "", "print_freq": 1024, "test_freq": -1, "test_mini_batch_size": 1, "test_num_workers": 0, "print_time": true, "print_wall_time": false, "debug_mode": false, "enable_profiling": false, "plot_compute_graph": false, "tensor_board_filename": "run_kaggle_pt", "save_model": "", "load_model": "model.pth", "ev_path": "stored_model/criteo_kaggle_5mil/epoch-00/ev-table-32", "num_of_dp": 0, "mlperf_logging": true, "mlperf_acc_threshold": 0.0, "mlperf_auc_threshold": 0.0, "mlperf_bin_loader": false, "mlperf_bin_shuffle": false, "mlperf_grad_accum_iter": 1, "lr_num_warmup_steps": 0, "lr_decay_start_step": 0, "lr_num_decay_steps": 0, "ntest_per_epoch": 3, "percent_data_for_inference": 0.01, "input_data": "./input/criteo_kaggle_5mil", "ln_emb": [1396, 549, 1373639, 406655, 290, 21, 11862, 607, 3, 53574, 5173, 1156254, 3119, 26, 11689, 833957, 10, 4710, 2062, 4, 1015598, 17, 15, 95860, 90, 64259]}
+==== ndevices = 1
+:::MLLOG {"namespace": "", "time_ms": 1643656736580, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "dlrm", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 89}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736581, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736582, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 98}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736582, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 102}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736582, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 106}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736582, "event_type": "POINT_IN_TIME", "key": "submission_entry", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 110}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736582, "event_type": "POINT_IN_TIME", "key": "submission_poc_name", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 114}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736583, "event_type": "POINT_IN_TIME", "key": "submission_poc_email", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 118}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736583, "event_type": "POINT_IN_TIME", "key": "seed", "value": 123, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1448}}
+:::MLLOG {"namespace": "", "time_ms": 1643656736583, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 128, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1451}}

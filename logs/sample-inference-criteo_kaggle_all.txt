@@ -1,0 +1,94 @@
+run pytorch ...
+Create folder to store the model and ev-tables
+:::MLLOG {"namespace": "", "time_ms": 1643744674805, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1109}}
+:::MLLOG {"namespace": "", "time_ms": 1643744674882, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1111}}
+world size: 1, current rank: 0, local rank: 0
+
+==================
+Using 1 GPU(s)...
+==================
+
+:::MLLOG {"namespace": "", "time_ms": 1643744676143, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1170}}
+:::MLLOG {"namespace": "", "time_ms": 1643744676143, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1172}}
+Loading criteo data
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START make_criteo_data_and_loaders
+>>>> IS INFERENCE ONLY == True
+>>>> Loading Criteo kaggle dataset!
+>>>>     Start Loading TESTing data!
+>>>>     Loaded data for testing is LIMITED TO Reduce memory during inference test!
+
+Reading pre-processed data=./input/criteo_kaggle_all/criteo_kaggle_all.npz
+file = ./input/criteo_kaggle_all/criteo_kaggle_all.npz
+Reduce the amount of data loaded! by cutting the array into new np.array
+y len = 366724
+Sparse fea = 26, Dense fea = 13
+len indices 1
+Defined split = test indices...
+==== Not splitting the indices, use ALL!
+==== test_indices = 366724   Should be reduced because only 40k will be used!
+>>>>     PyTorch Preparing test_loader for TESTing
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FINISH make_criteo_data_and_loaders
+command line args:  {"arch_sparse_feature_size": 36, "arch_embedding_size": "4-3-2", "arch_mlp_bot": "13-512-256-64-36", "arch_mlp_top": "512-256-1", "arch_interaction_op": "dot", "arch_interaction_itself": false, "weighted_pooling": null, "md_flag": false, "md_threshold": 200, "md_temperature": 0.3, "md_round_dims": false, "qr_flag": false, "qr_threshold": 200, "qr_operation": "mult", "qr_collisions": 4, "activation_function": "relu", "loss_function": "bce", "loss_weights": "1.0-1.0", "loss_threshold": 0.0, "round_targets": true, "data_size": 1, "num_batches": 0, "data_generation": "dataset", "rand_data_dist": "uniform", "rand_data_min": 0, "rand_data_max": 1, "rand_data_mu": -1, "rand_data_sigma": 1, "data_trace_file": "./input/dist_emb_j.log", "data_set": "kaggle", "raw_data_file": "./input/criteo_kaggle_all/train.txt", "processed_data_file": "./input/criteo_kaggle_all/criteo_kaggle_all.npz", "data_randomize": "total", "data_trace_enable_padding": false, "max_ind_range": -1, "data_sub_sample_rate": 0.0, "num_indices_per_lookup": 10, "num_indices_per_lookup_fixed": false, "num_workers": 0, "memory_map": false, "mini_batch_size": 128, "nepochs": 1, "learning_rate": 0.1, "print_precision": 5, "numpy_rand_seed": 123, "sync_dense_params": true, "optimizer": "sgd", "dataset_multiprocessing": false, "inference_only": true, "quantize_mlp_with_bit": 32, "quantize_emb_with_bit": 32, "save_onnx": false, "use_gpu": true, "local_rank": -1, "dist_backend": "", "print_freq": 1024, "test_freq": -1, "test_mini_batch_size": 1, "test_num_workers": 0, "print_time": true, "print_wall_time": false, "debug_mode": false, "enable_profiling": false, "plot_compute_graph": false, "tensor_board_filename": "run_kaggle_pt", "save_model": "", "load_model": "model.pth", "ev_path": "stored_model/criteo_kaggle_all/epoch-00/ev-table", "num_of_dp": 0, "mlperf_logging": true, "mlperf_acc_threshold": 0.0, "mlperf_auc_threshold": 0.0, "mlperf_bin_loader": false, "mlperf_bin_shuffle": false, "mlperf_grad_accum_iter": 1, "lr_num_warmup_steps": 0, "lr_decay_start_step": 0, "lr_num_decay_steps": 0, "ntest_per_epoch": 3, "percent_data_for_inference": 0.008, "input_data": "./input/criteo_kaggle_all", "ln_emb": [1460, 583, 10131227, 2202608, 305, 24, 12517, 633, 3, 93145, 5683, 8351593, 3194, 27, 14992, 5461306, 10, 5652, 2173, 4, 7046547, 18, 15, 286181, 105, 142572]}
+==== ndevices = 1
+:::MLLOG {"namespace": "", "time_ms": 1643744741899, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "dlrm", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 89}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741900, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 94}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741900, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 98}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741900, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 102}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741900, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 106}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741900, "event_type": "POINT_IN_TIME", "key": "submission_entry", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 110}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741901, "event_type": "POINT_IN_TIME", "key": "submission_poc_name", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 114}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741901, "event_type": "POINT_IN_TIME", "key": "submission_poc_email", "value": "reference_implementation", "metadata": {"file": "/mnt/extra/ev-store-dlrm/mlperf_logger.py", "lineno": 118}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741901, "event_type": "POINT_IN_TIME", "key": "seed", "value": 123, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1463}}
+:::MLLOG {"namespace": "", "time_ms": 1643744741901, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 128, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1466}}
+Loading saved model = /mnt/extra/ev-store-dlrm/stored_model/criteo_kaggle_all/epoch-00/model.pth
+Saved at: epoch = 0/1, batch = 306969/306969, ntbatch = 200
+Training state: loss = 0.446163
+Testing state: accuracy = 78.833 %, auc = 0.804
+Load new set of EV Table from = stored_model/criteo_kaggle_all/epoch-00/ev-table
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-1.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-2.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-3.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-4.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-5.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-6.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-7.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-8.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-9.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-10.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-11.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-12.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-13.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-14.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-15.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-16.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-17.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-18.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-19.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-20.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-21.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-22.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-23.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-24.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-25.csv
+Loading NEW EV per embedding layer = stored_model/criteo_kaggle_all/epoch-00/ev-table/ev-table-26.csv
+Done loading all EV-Table from stored_model/criteo_kaggle_all/epoch-00/ev-table
+time/loss/accuracy (if enabled):
+:::MLLOG {"namespace": "", "time_ms": 1643744939258, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 0.1, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1571}}
+:::MLLOG {"namespace": "", "time_ms": 1643744939259, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1575}}
+:::MLLOG {"namespace": "", "time_ms": 1643744939259, "event_type": "POINT_IN_TIME", "key": "sgd_opt_base_learning_rate", "value": 0.1, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1580}}
+:::MLLOG {"namespace": "", "time_ms": 1643744939259, "event_type": "POINT_IN_TIME", "key": "lr_decay_start_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1583}}
+:::MLLOG {"namespace": "", "time_ms": 1643744939260, "event_type": "POINT_IN_TIME", "key": "sgd_opt_learning_rate_decay_steps", "value": 0, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1586}}
+:::MLLOG {"namespace": "", "time_ms": 1643744939260, "event_type": "POINT_IN_TIME", "key": "sgd_opt_learning_rate_decay_poly_power", "value": 2, "metadata": {"file": "dlrm_s_pytorch.py", "lineno": 1588}}
+==== nbatches (comes from the train_ld)   = 306969
+============ Begin inference workload
+==== Limit n_test iteration by nbatches = False
+==== MAX n_test iteration (test_ld)     = 366724
+==== MAX n_test iteration (nbatches)     = 306969
+==== ==== Progress bar (max: 366720) shown below:
+........................................
+/mnt/extra/ev-store-dlrm/dlrm_data_pytorch.py:377: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:201.)
+  X_int = torch.log(torch.tensor(transposed_data[0], dtype=torch.float) + 1)
+.........................................
+recall 0.4357, precision 0.6560, f1 0.5236, ap 0.6249, auc 0.8170, best auc 0.8170, accuracy 79.923 %, best accuracy 0.000 %
+============ Finish the inference workload
+finished!

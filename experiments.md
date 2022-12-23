@@ -543,26 +543,7 @@ input_data="criteo_kaggle_all"
 ./bench/dlrm_s_criteo_kaggle_C1.sh "--load-model=model.pth --input-data=./input/$input_data --ev-path=stored_model/$input_data/epoch-00/ev-table --inference-only=True --mlperf-logging --percent-data-for-inference=0.001  --cache-size=64000 --ev-precs=32 --use-gpu=True --use-evstore=True --use-emb-cache=True --emb-stor=rocksdb --use-memory-map=True --extra-mem-load=9000 --overwrite-db=False" 
 ```
 ```
-[REMOVE START]
-# recall 0.3979, precision 0.6270, f1 0.4868, ap 0.5798, auc 0.8056, best auc 0.8056, accuracy 80.068 %, best accuracy 0.000 %
-# Progress bar (nWorkload: 45840) -> 0.001          --extra-mem-load=9000 -> 300 MiB left
-# EV-LFU (500000 + Warm-UP) + filepy  + free-page-cache (per 0.25 s)   
-    Perfect hit C1 (Warm-Up) = 16935 (92 secs)
-    Perfect hit C1 = 45840
-    73 secs (1 mins)           -- "In Memory EVLFU!!"   ============== Nope, not for criteo_kaggle_all
-
-
-    # flush_rate_C1 = 0.3   # perfect_item_cap_C1 = 0.95
-        Time elapsed (FINAL) : 74 secs (1 mins)
-            no init-overhead : 74 secs (1 mins)
-        EVLFU Cache size = 164000 ================ the criteo_kaggle_all needs 164000 to get 100% hit
-        Perfect hit C1 = 45840
-[REMOVE END]
     # recall 0.3979, precision 0.6270, f1 0.4868, ap 0.5798, auc 0.8056, best auc 0.8056, accuracy 80.068 %, best accuracy 0.000 %
-[REMOVE START]
-        Time elapsed (FINAL) : 77 secs (1 mins)
-            no init-overhead : 77 secs (1 mins)
-[REMOVE END]
         EVLFU Cache size = 64000
         Perfect hit C1 = 30783
 ```

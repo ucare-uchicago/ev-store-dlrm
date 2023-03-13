@@ -967,7 +967,7 @@ rsync  -a --ignore-existing /Users/daniar/Documents/EV-Store/alternative-keys 19
     #define TOTAL_SIZE            15085   // 8000 is 3% in memory
     #define SIZE_PROPORTION       "30 63 7"  // 30 50 20 | 35 55 10 |The size of C1 : C2 : C3. The total must be 100
     ```
-- Execute DLRM inference  [THIS EXPERIMENT IS NOT EVEN C1 C2 C3, JUST C1 C2, BECAUSE THE FINAL SIZE PROPORTION IS 0]
+- Execute DLRM inference 
 
     ```bash
     cd /mnt/extra/ev-store-dlrm/

@@ -19,7 +19,7 @@ Contact Information
 
 **Maintainer**: [Daniar H. Kurniawan](https://people.cs.uchicago.edu/~daniar/), Email: ``daniar@uchicago.edu``
 
-> **Daniar is on the job market.** Please contact him if you have an opening for an AIOps and ML-Sys engineer role!
+[//]: <> (**Daniar is on the job market.** Please contact him if you have an opening for an AIOps and ML-Sys engineer role!)
 
 Feel free to contact Daniar for any suggestions/feedback, bug
 reports, or general discussions.
